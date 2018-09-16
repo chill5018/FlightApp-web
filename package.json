@@ -1,0 +1,90 @@
+{
+  "version": "1.0.0",
+  "name": "mimimal-react-setup",
+  "description": "Backend API for Artland",
+  "author": "Colin Hill",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build-dev": "webpack --mode development",
+    "lint": "eslint ./src --fix",
+    "storybook": "start-storybook -p 6006 -c .storybook",
+    "test": "jest",
+    "test:coverage": "jest --watch --coverage",
+    "test:watch": "jest --watch",
+    "start": "yarn dev",
+    "dev": "webpack-dev-server --mode development --env.env=dev",
+    "dev:bundleanalyze": "npm run dev -- --env.addons=bundleanalyze",
+    "build": "webpack --env.env=prod",
+    "build:bundleanalyze": "npm run build -- --env.addons=bundleanalyze",
+    "build:bundlevisualizer": "npm run build -- --env.addons=bundlevisualizer"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "react",
+      "stage-2"
+    ]
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^3.4.10",
+    "@storybook/addon-jest": "^3.4.10",
+    "@storybook/addon-knobs": "^3.4.10",
+    "@storybook/addon-links": "^3.4.10",
+    "@storybook/react": "^3.4.10",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "compression-webpack-plugin": "^1.1.11",
+    "css-loader": "^1.0.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.10.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.11",
+    "ignore-styles": "^5.0.1",
+    "jest": "^23.4.2",
+    "jest-enzyme": "^6.0.2",
+    "jsdom": "^11.12.0",
+    "node-sass": "^4.9.2",
+    "react-addons-test-utils": "^15.6.2",
+    "react-hot-loader": "^4.3.4",
+    "sass-loader": "^7.1.0",
+    "sinon": "^6.1.4",
+    "style-loader": "^0.21.0",
+    "uglifyjs-webpack-plugin": "^1.2.7",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.16.1",
+    "webpack-bundle-analyzer": "^2.13.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5",
+    "webpack-merge": "^4.1.4",
+    "webpack-visualizer-plugin": "^0.1.11"
+  },
+  "dependencies": {
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/setupTests.js",
+    "testPathIgnorePatterns": [
+      "<rootDir>/__tests__/setup/"
+    ],
+    "setupFiles": [
+      "<rootDir>/test/helpers.js",
+      "<rootDir>/test/dom.js"
+    ],
+    "testURL": "http://localhost",
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/assetsTransformer.js"
+    }
+  }
+}
