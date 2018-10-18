@@ -1,6 +1,7 @@
 import React from 'react';
+import { mount } from 'enzyme';
 
-import App, { doIncrement, doDecrement } from './';
+import App, { doIncrement, doDecrement } from './index';
 
 describe('App', () => {
   describe('state', () => {
@@ -20,7 +21,7 @@ describe('App', () => {
   });
 
   describe('component', () => {
-    const component = shallow(<App title={'Foo Bar'} />);
+    const component = shallow(<App title="Foo Bar" />);
 
     it('renders the component with the correct element', () => {
       expect(component.type()).toEqual('div');

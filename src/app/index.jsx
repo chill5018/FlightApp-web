@@ -3,11 +3,11 @@ import logo from './react.png';
 import './index.scss';
 
 
-const doIncrement = (prevState) => ({
+const doIncrement = prevState => ({
   counter: prevState.counter + 1,
 });
 
-const doDecrement = (prevState) => ({
+const doDecrement = prevState => ({
   counter: prevState.counter - 1,
 });
 
