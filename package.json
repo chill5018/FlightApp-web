@@ -12,7 +12,7 @@
     "test": "jest",
     "test:coverage": "jest --watch --coverage",
     "test:watch": "jest --watch",
-    "start": "PORT=8080 pm2 start ./www.js",
+    "start": "serve -s build",
     "postinstall": "yarn build",
     "dev": "webpack-dev-server --mode development --env.env=dev",
     "dev:bundleanalyze": "npm run dev -- --env.addons=bundleanalyze",
@@ -67,7 +67,8 @@
   "dependencies": {
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-dom": "^16.5.2",
+    "serve": "^10.0.2"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/setupTests.js",
