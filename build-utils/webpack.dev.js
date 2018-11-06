@@ -1,4 +1,4 @@
-/* eslint-disable */ 
+/* eslint-disable */
 const webpack = require('webpack');
 const commonPaths = require('./common-paths');
 
@@ -13,6 +13,11 @@ const config = {
         test: /\.s(a|c)ss/,
         exclude: /node_modules/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.css/,
+        include: /node_modules/,
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
