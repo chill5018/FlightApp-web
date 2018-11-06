@@ -14,6 +14,11 @@ const config = {
         exclude: /node_modules/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
+      {
+        test: /\.css/,
+        include: /node_modules/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
   plugins: [
