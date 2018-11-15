@@ -1,8 +1,5 @@
 import React from 'react';
 
-
-import logo from './react.png';
-
 class App extends React.Component {
   state = {}
 

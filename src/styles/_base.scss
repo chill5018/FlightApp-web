@@ -1,18 +1,127 @@
 .app {
-  &-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  &-main {
+    height: 100%;
+    width: 100%;
+    background-color: #0f2f53;
+    background-attachment: fixed;
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 1px;
+    text-align: center;
+    padding: 30px;
+    margin: 0 auto;
+    color: #fff;
 
-    &-image {
-      width: 250px;
-      height: auto;
+    &-wrapper {
+      width: 80%;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    &-col {
+      float: left;
+      margin: 0 auto;
+    }
+
+    &-col_1 {
+      width:100%;
+      margin: 0 auto;
+    }
+
+    &-col_2 {
+      width:50%;
+      margin: 10px auto;
+    }
+
+    &-hr {
+      background-color: #fff;
+    }
+
+    &-h4 {
+      margin-top: 60px;
+      margin-bottom: 20px;
+    }
+
+    &-form{
+      width: 100%;
+      text-align: left;
+      margin-bottom: 60px;
+
+      &-label {
+        text-align: left;
+        font-size: 13px;
+      }
+
+      &-input {
+        height: 30px;
+        border-radius: 10px;
+        font-size: 10px;
+        font-style: italic;
+      }
+
+      &-date_picker {
+        font-style: italic;
+        width: 90%;
+        margin: 0 auto;
+        font-size: 12px;
+        color: #6c757d;
+      }
+
+      &-checkbox {
+        margin-top: 20px;
+        margin-right: 10px;
+      }
+
+      &-button {
+        width: 50%;
+        margin: 0 auto;
+        border-radius: 10px;
+      }
+
+      &-button_color {
+        background-color: #4d8778;
+      }
     }
   }
 
-  &-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  &-header {
+    width: 100%;
+    height: 60px;
+    padding: 15px;
+    letter-spacing: 1px;
+    background-color: #4d8778;
+
+    &-logo {
+      width: 30px;
+      height: 30px;
+      position:fixed;
+      left: 20px;
+      cursor: pointer;
+    }
+
+    &-h2{
+      position:fixed;
+      left: 60px;
+      margin-top: 5px;
+      color: #fff;
+      font-style: italic;
+      font-size: 18px;
+    }
   }
+
+  &-footer {
+    width: 100%;
+    height: 60px;
+    padding: 5px;
+    background-color: #4d8778;
+    position: fixed;
+    bottom:0px;
+    text-align: center;
+    left: 0px;
+    &-cite{
+      color: #fff;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+  }
+
 }
