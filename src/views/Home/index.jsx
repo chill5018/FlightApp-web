@@ -51,7 +51,7 @@ class App extends React.Component {
 
       <hr className="app-main-hr" />
 
-    <h4 className="app-main-h4">View booking</h4>
+    <h4 className="app-main-h4">View a booking</h4>
      <form onSubmit={() => {}} className="app-main-form app-main-col_1">
         <div className="app-main-col_2">
           <Input className="app-main-form-input" placeholder="Booking reference" />
