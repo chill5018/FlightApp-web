@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './react.png';
 
 class App extends React.Component {
   state = {}
@@ -8,9 +7,6 @@ class App extends React.Component {
     return (
       <div>
         <div className="app-header">
-          <h1>
-            Amazing Airlines
-          </h1>
           <img className="app-header-image" src={logo} height="30px" width="auto" alt="logo"/>
         </div>
 
