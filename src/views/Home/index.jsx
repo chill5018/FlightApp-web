@@ -27,20 +27,29 @@ class App extends React.Component {
           <Input className="app-main-form-input"  placeholder="New York City(JFK)" />
         </div>
 
-         <div className="app-main-col_2">
+      <div className="app-main-col_2">
+
+         <div className="app-main-col app-main-col_2">
           <input type="checkbox" className="app-main-form-checkbox" id="roundtrip"/>
-          <label className="app-main-form-label" for="roundtrip">Return flight</label>
+          <label className=" app-main-form-label" for="roundtrip">One way trip</label>
         </div>
+
+        <div className="app-main-col app-main-col_2">
+          <input type="number" className="app-main-form-number" placeholder="1"/>
+          <label className="app-main-form-label" for="roundtrip">Traveller(s)</label>
+        </div>
+
+      </div>
 
       <div className="app-main-col_2">
         <div className="app-main-col app-main-col_2">
           <label className="app-main-form-label">Depart</label><br/>
-          <input type="date" className="app-main-form-date_picker"/>
-      </div>
+          <Input type="date" className="app-main-form-date_picker"/>
+        </div>
 
         <div className="app-main-col app-main-col_2">
           <label className="app-main-form-label">Return</label><br/>
-          <input type="date" className="app-main-form-date_picker"/>
+          <Input type="date" className="app-main-form-date_picker"/>
         </div>
       </div>
 
@@ -61,9 +70,6 @@ class App extends React.Component {
         <Button className="w-100 mt-5 app-main-form-button_color">Search</Button>
       </div>
      </form>
-
-
-
    </div>
 
   </div>
