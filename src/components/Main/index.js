@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, HashRouter } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Home from '../../views/Home';
 import Booking from '../../views/Booking/index';
 import Flight from '../../views/Flights/index';
@@ -11,13 +11,11 @@ import Flight from '../../views/Flights/index';
 // when the pathname is exactly the string "/"
 const Main = () => (
   <main>
-   <HashRouter>
     <Switch>
       <Route path="/" exact component={Home} />
       <Route path="/bookings" exact component={Booking} />
       <Route path="/flights" exact component={Flight} />
     </Switch>
-    </HashRouter>
   </main>
 );
 

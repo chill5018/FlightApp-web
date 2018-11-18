@@ -28,6 +28,8 @@ const config = {
     contentBase: './dist',
     hot: true,
     port: 3000,
+    publicPath: '/',
+    historyApiFallback: true,
   },
   devtool: 'eval-source-map',
 };
