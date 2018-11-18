@@ -54,12 +54,10 @@
   //MAIN - GRID
   //=====================================================
   &-main {
-    height: 100%;
     width: 100%;
     padding-top: 100px !important;
     padding-bottom: 100px !important;
     background-color: #0f2f53;
-    background-attachment: fixed;
     font-family: 'Open Sans', sans-serif;
     letter-spacing: 1px;
     text-align: center;
@@ -109,13 +107,13 @@
       margin: 0px auto;
     }
 
-    &-hr {
-      background-color: #fff;
+    &-h4 {
+      margin-bottom: 30px;
     }
 
-    &-h4 {
-      margin-top: 60px;
-      margin-bottom: 20px;
+    &-hr {
+      background-color: #fff;
+      margin: 50px;
     }
 
     &-p {
@@ -129,7 +127,6 @@
     &-form {
       width: 100%;
       text-align: left;
-      margin-bottom: 60px;
 
       &-label {
         text-align: left;
