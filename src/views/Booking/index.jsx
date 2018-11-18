@@ -6,13 +6,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div className="app-header">
-          <img className="app-header-image" src={logo} height="30px" width="auto" alt="logo"/>
-        </div>
-
         <hr />
 
-        <div className="app-content">
+        <div className="app-main">
           <p>
             Show Previous Bookings
           </p>
