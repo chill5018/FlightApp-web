@@ -109,6 +109,7 @@
 
     &-h4 {
       margin-bottom: 30px;
+      font-size: 20px;
     }
 
     &-hr {
@@ -204,6 +205,11 @@
         top: 50px;
         left: 0;
         right: 0;
+
+        &-bookings{
+          padding:50px 50px;
+        }
+
       }
 
       &-flights {
@@ -426,6 +432,11 @@
           font-size: 12px;
         }
       }
+    }
+
+    &-bookings{
+      margin-top: 220px;
+      margin-bottom: 150px;
     }
 
     //MEDIA QUERIES MAIN
