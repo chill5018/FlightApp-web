@@ -1,9 +1,6 @@
 import React from 'react';
 import { Input, Button } from 'reactstrap';
-import DateRangePicker from '@wojtekmaj/react-daterange-picker';
-
 import './index.scss';
-import { checked } from 'glamor';
 
 class App extends React.Component {
   state = {}
@@ -15,7 +12,7 @@ class App extends React.Component {
     return (
   <div className="app-main">
    <div className="app-main-wrapper">
-    <h4>Book a flight</h4>
+    <h4 className="app-main-h4">Book a flight</h4>
      <form onSubmit={() => {}} className="app-main-form app-main-col_1">
         <div className="app-main-col_2">
           <label className="app-main-form-label">From</label>
