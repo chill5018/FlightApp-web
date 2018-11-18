@@ -8,8 +8,8 @@ export const actions = [
   'FETCH_START',
   'FETCHED_BOOKINGS_SUCCESSFULLY',
   'FETCHED_BOOKINGS_FAILED',
-  'BOOKED_FLIGTH_SUCCESSFULLY',
-  'BOOKED_FLIGTH_FAILED',
+  'BOOKED_FLIGHT_SUCCESSFULLY',
+  'BOOKED_FLIGHT_FAILED',
 ].reduce((result, key) => {
   result[key] = key;
   return result;
@@ -27,7 +27,7 @@ export const bookings = (
     case actions.FETCH_START:
       return { ...state, loading: true };
     case actions.FETCHED_BOOKINGS_SUCCESSFULLY:
-    case actions.BOOKED_FLIGTH_SUCCESSFULLY:
+    case actions.BOOKED_FLIGHT_SUCCESSFULLY:
       return {
         ...state,
         loading: false,
