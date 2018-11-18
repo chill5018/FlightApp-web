@@ -1,8 +1,8 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, HashRouter } from 'react-router-dom';
 import Home from '../../views/Home';
-import Booking from '../../views/Booking';
-import Flight from '../../views/Flights';
+import Booking from '../../views/Booking/index';
+import Flight from '../../views/Flights/index';
 
 // The Main component renders one of the three provided
 // Routes (provided that one matches). Both the /roster
@@ -11,11 +11,13 @@ import Flight from '../../views/Flights';
 // when the pathname is exactly the string "/"
 const Main = () => (
   <main>
+   <HashRouter>
     <Switch>
-      <Route exact path="/" component={Home} />
-      <Route path="/bookings" component={Booking} />
-      <Route path="/flights" component={Flight} />
+      <Route path="/" exact component={Home} />
+      <Route path="/bookings" exact component={Booking} />
+      <Route path="/flights" exact component={Flight} />
     </Switch>
+    </HashRouter>
   </main>
 );
 

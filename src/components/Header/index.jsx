@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../styles/around.png';
+import logo from '../../img/around.png';
 
 /* eslint-disable react/jsx-one-expression-per-line */
 
-// The Header creates links that can be used to navigate
-// between routes.
+// The Header creates link to go back home (on logo)
 const Header = () => (
   <header className="app-header">
    <div>
