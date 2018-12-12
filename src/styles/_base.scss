@@ -457,7 +457,13 @@
       &-wrapper {
         width: 90%;
       }
-
     }
+  }
+}
+
+.search-bar {
+  &-input {
+    margin-top: 4px;
+    height: 40px;
   }
 }

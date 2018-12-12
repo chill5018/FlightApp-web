@@ -1,8 +1,31 @@
 import React, { Component } from 'react';
-import DateRangePicker from '@wojtekmaj/react-daterange-picker';
+import Select from 'react-select';
 import { Input, Button } from 'reactstrap';
-import FlightCard from '../../components/FlightCard/index'
+import FlightCard from '../../components/FlightCard/index';
 
+const options = [
+  { label: 'Copenhagen', value: 'CPH' },
+  { label: 'New York City (JFK)', value: 'JFK' },
+];
+
+const optionStyles = {
+  control: styles => ({ ...styles, backgroundColor: 'white' }),
+  option: (styles) => {
+    const color = '#000';
+    return {
+      ...styles,
+      color,
+    };
+  },
+  input: (styles) => {
+    return {
+      ...styles,
+      'min-height': '30px',
+    };
+  },
+};
+
+/* eslint-disable jsx-a11y/label-has-for */
 class Flights extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +44,14 @@ class Flights extends Component {
     change[e.target.name] = e.target.value;
 
     this.setState(change);
+  }
+
+  handleArrivalChange = (selectedOption) => {
+    this.setState({ arrivalCity: selectedOption });
+  }
+
+  handleDepartureChange = (selectedOption) => {
+    this.setState({ departureCity: selectedOption });
   }
 
   bookFlight(event) {
@@ -42,37 +73,87 @@ class Flights extends Component {
   }
 
   render() {
-    const { date } = this.state;
+    const { departureCity, arrivalCity } = this.state;
     return (
     <div className="app-main">
       <div className="app-main-form-background">
         <div className="app-main-col_1 app-main-form-flights">
           <form onSubmit={() => {}} className="app-main-form app-main-col_1">
-            <Input
-              className="app-main-col app-main-col_6 app-main-form-input"
-              placeholder="København(CPH)"
-              name="departureCity"
-              onChange={this.handleChange}
-            />
-            <Input
+            <div className="app-main-col app-main-col_6 app-main-form-input dropdown-container">
+              <Select
+                className="app-main-form-input"
+                name="departureCity"
+                onChange={this.handleDepartureChange}
+                options={options}
+                placeholder="Departure"
+                styles={optionStyles}
+                value={departureCity}
+              />
+            </div>
+            <div className="app-main-col app-main-col_6 app-main-form-input dropdown-container">
+              <Select
+                className="app-main-form-input"
+                name="arrivalCity"
+                onChange={this.handleArrivalChange}
+                options={options}
+                placeholder="Arrival"
+                styles={optionStyles}
+                value={arrivalCity}
+              />
+            </div>
+            <div className="app-main-col app-main-col_6 app-main-form-input">
+              <Input
+                type="date"
+                className="app-main-form-date_picker search-bar-input"
+                name="departureDate"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="app-main-col app-main-col_6 app-main-form-input">
+
+              <Input
+                type="date"
+                className="app-main-form-date_picker search-bar-input"
+                name="returnDate"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="app-main-col app-main-col_8 app-main-form-input">
+              <input
+                type="number"
+                style={{ marginTop: 0 }}
+                className="app-main-form-number search-bar-input"
+                placeholder="1"
+                name="ticketQty"
+                onChange={this.handleChange}
+              />
+            </div>
+
+            {/* <Input
               className="app-main-col app-main-col_6 app-main-form-input"
               placeholder="New York City(JFK)"
               name="arrivalCity"
               onChange={this.handleChange}
             />
-            <DateRangePicker
-              className="app-main-col app-main-col_6 app-main-form-date_range_picker"
+            <Input
+              type="date"
+              className="app-main-col app-main-col_6 app-main-form-input"
               name="departureDate"
-              onChange={this.onChange}
-              value={date}
+              onChange={this.handleChange}
             />
             <Input
+              type="date"
               className="app-main-col app-main-col_6 app-main-form-input"
+              name="returnDate"
+              onChange={this.handleChange}
+            />
+            <Input
+              className="app-main-col app-main-col_8 app-main-form-input"
               type="number"
               name="ticketQty"
               onChange={this.handleChange}
               placeholder="1 adult economy"
-            />
+            /> */}
             <Button
               className="app-main-col app-main-col_6 app-main-form-btn_flights app-main-form-button_color"
               onClick={this.searchFlight}
