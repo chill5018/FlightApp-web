@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { convertToTime, calculateDuration } from '../../utils/helpers';
 
 
 const propTypes = {
@@ -78,7 +79,7 @@ const FlightCard = ({ flight }) => (
           { flight.departureFlight.origin.code.toUpperCase() }
         </h5>
         <h5 className="app-main-col app-main-flightCard-time">
-          18:30
+          { convertToTime(flight.departureFlight.departureDateTime) }
         </h5>
         <br />
         <h6 className="app-main-col app-main-flightCard-airport">
@@ -88,7 +89,11 @@ const FlightCard = ({ flight }) => (
 
       <div className="app-main-col">
         <p className="app-main-flightCard-leg-time">
-          8h 30m
+          { calculateDuration(
+            flight.departureFlight.departureDateTime,
+            flight.departureFlight.arrivalDateTime,
+          )
+          }
         </p>
         <div className="app-main-flightCard-leg" />
         <p className="app-main-flightCard-leg-type">
@@ -98,7 +103,7 @@ const FlightCard = ({ flight }) => (
 
       <div className="app-main-col">
         <h5 className="app-main-col app-main-flightCard-time">
-          21:00
+        { convertToTime(flight.departureFlight.arrivalDateTime) }
         </h5>
         {' '}
         <h5 className="app-main-col app-main-flightCard-airportCode">
@@ -118,7 +123,7 @@ const FlightCard = ({ flight }) => (
             { flight.returnFlight.origin.code.toUpperCase() }
           </h5>
           <h5 className="app-main-col app-main-flightCard-time">
-            23:00
+            { convertToTime(flight.returnFlight.departureDateTime) }
           </h5>
           <br />
           <h6 className="app-main-col app-main-flightCard-airport">
@@ -128,7 +133,11 @@ const FlightCard = ({ flight }) => (
 
         <div className="app-main-col">
           <p className="app-main-flightCard-leg-time">
-            7h 10m
+            { calculateDuration(
+              flight.returnFlight.departureDateTime,
+              flight.returnFlight.arrivalDateTime,
+            )
+            }
           </p>
           <div className="app-main-flightCard-leg" />
           <p className="app-main-flightCard-leg-type">
@@ -138,7 +147,7 @@ const FlightCard = ({ flight }) => (
 
         <div className="app-main-col">
           <h5 className="app-main-col app-main-flightCard-time">
-            12:10
+            { convertToTime(flight.returnFlight.arrivalDateTime) }
           </h5>
           {' '}
           <h5 className="app-main-col app-main-flightCard-airportCode">
