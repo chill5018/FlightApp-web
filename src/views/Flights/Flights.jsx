@@ -3,6 +3,8 @@ import Select from 'react-select';
 import { Input, Button } from 'reactstrap';
 import FlightCard from '../../components/FlightCard/index';
 
+import { flightResponse } from '../../data/flight-response';
+
 const options = [
   { label: 'Copenhagen', value: 'CPH' },
   { label: 'New York City (JFK)', value: 'JFK' },
@@ -128,32 +130,6 @@ class Flights extends Component {
                 onChange={this.handleChange}
               />
             </div>
-
-            {/* <Input
-              className="app-main-col app-main-col_6 app-main-form-input"
-              placeholder="New York City(JFK)"
-              name="arrivalCity"
-              onChange={this.handleChange}
-            />
-            <Input
-              type="date"
-              className="app-main-col app-main-col_6 app-main-form-input"
-              name="departureDate"
-              onChange={this.handleChange}
-            />
-            <Input
-              type="date"
-              className="app-main-col app-main-col_6 app-main-form-input"
-              name="returnDate"
-              onChange={this.handleChange}
-            />
-            <Input
-              className="app-main-col app-main-col_8 app-main-form-input"
-              type="number"
-              name="ticketQty"
-              onChange={this.handleChange}
-              placeholder="1 adult economy"
-            /> */}
             <Button
               className="app-main-col app-main-col_6 app-main-form-btn_flights app-main-form-button_color"
               onClick={this.searchFlight}
@@ -168,9 +144,9 @@ class Flights extends Component {
          <p className="app-main-p">
           Total results: 20
          </p>
-           <FlightCard bookFlight={this.bookFlight} />
-           <FlightCard bookFlight={this.bookFlight} />
-           <FlightCard bookFlight={this.bookFlight} />
+          { flightResponse.map(flight => (
+            <FlightCard flight={flight} bookFlight={this.bookFlight} />
+          ))}
         </div>
       </div>
     </div>
