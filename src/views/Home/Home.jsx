@@ -1,7 +1,25 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Input, Button } from 'reactstrap';
+import Select from 'react-select';
+
 import './index.scss';
+
+const options = [
+  { label: 'Copenhagen', value: 'CPH' },
+  { label: 'New York City (JFK)', value: 'JFK' },
+];
+
+const optionStyles = {
+  control: styles => ({ ...styles, backgroundColor: 'white' }),
+  option: (styles) => {
+    const color = '#000';
+    return {
+      ...styles,
+      color,
+    };
+  },
+};
 
 /* eslint-disable jsx-a11y/label-has-for */
 class Home extends Component {
@@ -14,18 +32,28 @@ class Home extends Component {
 
     this.bookFlight = this.bookFlight.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleDepartureChange = this.handleDepartureChange.bind(this);
+    this.handleArrivalChange = this.handleArrivalChange.bind(this);
     this.searchFlights = this.searchFlights.bind(this);
   }
 
-  onChange = date => this.setState({ date })
+  handleChange = (event) => {
+    /* eslint-disable prefer-destructuring */
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
 
-  handleChange = (e) => {
-    e.preventDefault();
+    this.setState({
+      [name]: value,
+    });
+  }
 
-    const change = {};
-    change[e.target.name] = e.target.value;
+  handleArrivalChange = (selectedOption) => {
+    this.setState({ arrivalCity: selectedOption });
+  }
 
-    this.setState(change);
+  handleDepartureChange = (selectedOption) => {
+    this.setState({ departureCity: selectedOption });
   }
 
   bookFlight(event) {
@@ -45,11 +73,11 @@ class Home extends Component {
 
     history.push('/flights');
 
-    searchFlights(departureCity, arrivalCity, departureDate, ticketQty);
+    searchFlights(departureCity.value, arrivalCity.value, departureDate, ticketQty);
   }
 
   render() {
-    const { isRoundtrip } = this.state;
+    const { isRoundtrip, arrivalCity, departureCity } = this.state;
     return (
       <div className="app-main">
         <div className="app-main-wrapper">
@@ -57,42 +85,48 @@ class Home extends Component {
             Book a flight
           </h4>
           <form onSubmit={() => {}} className="app-main-form app-main-col_1">
-            <div className="app-main-col_2">
+            <div className="app-main-col_2 dropdown-container">
               <label className="app-main-form-label">
                 From
               </label>
-              <Input
+              <Select
                 className="app-main-form-input"
-                placeholder="København(CPH)"
                 name="departureCity"
-                onChange={this.handleChange}
+                onChange={this.handleDepartureChange}
+                options={options}
+                placeholder="Departure City"
+                styles={optionStyles}
+                value={departureCity}
               />
             </div>
 
-            <div className="app-main-col_2">
+            <div className="app-main-col_2 dropdown-container">
               <label className="app-main-form-label">
                 To
               </label>
-              <Input
+              <Select
                 className="app-main-form-input"
-                placeholder="New York City(JFK)"
                 name="arrivalCity"
-                onChange={this.handleChange}
+                onChange={this.handleArrivalChange}
+                options={options}
+                placeholder="Arrival City"
+                styles={optionStyles}
+                value={arrivalCity}
               />
             </div>
 
             <div className="app-main-col_2">
-
               <div className="app-main-col app-main-col_2">
-                <input
-                  type="checkbox"
-                  className="app-main-form-checkbox"
-                  id="roundtrip"
-                  name="isRoundtrip"
-                  onChange={this.handleChange}
-                />
+                  <input
+                    checked={isRoundtrip}
+                    className="app-main-form-checkbox"
+                    id="roundtrip"
+                    name="isRoundtrip"
+                    onChange={this.handleChange}
+                    type="checkbox"
+                  />
                 <label className="app-main-form-label" htmlFor="roundtrip">
-                  One way trip
+                  Round Trip
                 </label>
               </div>
 
@@ -141,7 +175,7 @@ class Home extends Component {
               )}
             </div>
 
-            <div className="app-main-form-button">
+            <div className="app-main-form-button search-bar-input">
               <Button
                 className="w-100 mt-5 app-main-form-button_color"
                 onClick={this.searchFlights}
