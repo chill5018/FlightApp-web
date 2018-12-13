@@ -23,7 +23,7 @@ export const bookings = (
   },
   action = {},
 ) => {
-  switch (actions.type) {
+  switch (action.type) {
     case actions.FETCH_START:
       return { ...state, loading: true };
     case actions.FETCHED_BOOKINGS_SUCCESSFULLY:
