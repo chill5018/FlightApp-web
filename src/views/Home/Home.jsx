@@ -175,7 +175,7 @@ class Home extends Component {
               )}
             </div>
 
-            <div className="app-main-form-button search-bar-input">
+            <div className="app-main-form-button">
               <Button
                 className="w-100 mt-5 app-main-form-button_color"
                 onClick={this.searchFlights}
