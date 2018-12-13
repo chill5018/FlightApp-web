@@ -9,6 +9,7 @@ import Home from './Home';
 const mapStateToProps = (state) => {
   return {
     flights: state.flights.flights,
+    loading: state.flights.loading,
   };
 };
 

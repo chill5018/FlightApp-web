@@ -26,6 +26,10 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      departureCity: options[0],
+      arrivalCity: options[1],
+      departureDate: '2019-02-01',
+      returnDate: '2019-02-14',
       isRoundtrip: true,
       ticketQty: 1,
     };
@@ -35,6 +39,13 @@ class Home extends Component {
     this.handleDepartureChange = this.handleDepartureChange.bind(this);
     this.handleArrivalChange = this.handleArrivalChange.bind(this);
     this.searchFlights = this.searchFlights.bind(this);
+  }
+
+  componentWillReceiveProps(newProps) {
+    const { history } = this.props;
+    if (newProps.flights) {
+      history.push('/flights');
+    }
   }
 
   handleChange = (event) => {
@@ -62,8 +73,8 @@ class Home extends Component {
     bookFlight(event.target.value);
   }
 
-  searchFlights(event) {
-    const { searchFlights, history } = this.props;
+  async searchFlights() {
+    const { searchFlights } = this.props;
     const {
       departureCity,
       arrivalCity,
@@ -72,15 +83,18 @@ class Home extends Component {
       ticketQty,
     } = this.state;
 
-    // TODO: Add Form Validation
-
-    history.push('/flights');
-
-    searchFlights(departureCity.value, arrivalCity.value, departureDate, returnDate, ticketQty);
+    /* eslint-disable max-len */
+    await searchFlights(departureCity.value, arrivalCity.value, departureDate, returnDate, ticketQty);
   }
 
   render() {
-    const { isRoundtrip, arrivalCity, departureCity } = this.state;
+    const {
+      isRoundtrip,
+      arrivalCity,
+      departureCity,
+      departureDate,
+      returnDate,
+    } = this.state;
     return (
       <div className="app-main">
         <div className="app-main-wrapper">
@@ -158,6 +172,7 @@ class Home extends Component {
                   type="date"
                   className="app-main-form-date_picker"
                   name="departureDate"
+                  value={departureDate}
                   onChange={this.handleChange}
                 />
               </div>
@@ -172,6 +187,7 @@ class Home extends Component {
                     type="date"
                     className="app-main-form-date_picker"
                     name="returnDate"
+                    value={returnDate}
                     onChange={this.handleChange}
                   />
                 </div>

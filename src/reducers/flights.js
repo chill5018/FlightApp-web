@@ -8,6 +8,7 @@ export const actions = [
   'FETCH_START',
   'FETCHED_FLIGHTS_SUCCESSFULLY',
   'FETCHED_FLIGHTS_FAILED',
+  'STORED_FLIGHT_SEARCH_SUCCESSFULLY',
 ].reduce((result, key) => {
   result[key] = key;
   return result;
@@ -18,10 +19,11 @@ export const flights = (
   state = {
     loading: false,
     flights: undefined,
+    searchParams: undefined,
   },
   action = {},
 ) => {
-  switch (actions.type) {
+  switch (action.type) {
     case actions.FETCH_START:
       return { ...state, loading: true };
     case actions.FETCHED_FLIGHTS_SUCCESSFULLY:
@@ -35,6 +37,11 @@ export const flights = (
         ...state,
         loading: false,
         flights: undefined,
+      };
+    case actions.STORED_FLIGHT_SEARCH_SUCCESSFULLY:
+      return {
+        ...state,
+        searchParams: action.payload,
       };
     default: return state;
   }
@@ -60,7 +67,9 @@ export const getFlights = () => (dispatch) => {
     });
 };
 
-export const searchFlights = (departureCity, arrivalCity, departureDate, returnDate) => (dispatch) => {
+export const storeFlightSearchParams = (
+  departureCity, arrivalCity, departureDate, returnDate,
+) => (dispatch) => {
   dispatch({
     type: actions.FETCH_START,
   });
@@ -72,19 +81,40 @@ export const searchFlights = (departureCity, arrivalCity, departureDate, returnD
     returnDate,
   };
 
+  dispatch({
+    type: actions.STORED_FLIGHT_SEARCH_SUCCESSFULLY,
+    payload: params,
+  });
+};
+
+export const searchFlights = (
+  departureCity, arrivalCity, departureDate, returnDate,
+) => (dispatch) => {
+  dispatch({
+    type: actions.FETCH_START,
+  });
+
+  const params = {
+    departureCity,
+    arrivalCity,
+    departureDate,
+    returnDate,
+  };
+
+  dispatch(storeFlightSearchParams(departureCity, arrivalCity, departureDate, returnDate));
+
   if (!returnDate) {
     delete params.returnDate;
   }
 
   axios.get(`${BASE_URL}/api/flights`, {
     params,
+  }).then((response) => {
+    dispatch({
+      type: actions.FETCHED_FLIGHTS_SUCCESSFULLY,
+      payload: response.data,
+    });
   })
-    .then((response) => {
-      dispatch({
-        type: actions.FETCHED_FLIGHTS_SUCCESSFULLY,
-        payload: response.data,
-      });
-    })
     .catch(() => {
       dispatch({
         type: actions.FETCHED_FLIGHTS_FAILED,
