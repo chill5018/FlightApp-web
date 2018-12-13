@@ -68,12 +68,15 @@ class Home extends Component {
       departureCity,
       arrivalCity,
       departureDate,
+      returnDate,
       ticketQty,
     } = this.state;
 
+    // TODO: Add Form Validation
+
     history.push('/flights');
 
-    searchFlights(departureCity.value, arrivalCity.value, departureDate, ticketQty);
+    searchFlights(departureCity.value, arrivalCity.value, departureDate, returnDate, ticketQty);
   }
 
   render() {
