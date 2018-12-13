@@ -16,6 +16,9 @@ describe('Flight Snapshot', () => {
       flights: {
         flights: undefined,
       },
+      bookings: {
+        booking: undefined,
+      },
     };
 
     const component = renderer.create(
