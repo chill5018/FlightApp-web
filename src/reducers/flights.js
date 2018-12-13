@@ -60,16 +60,24 @@ export const getFlights = () => (dispatch) => {
     });
 };
 
-export const searchFlights = (departCity, arriveCity, departDate, returnDate) => (dispatch) => {
+export const searchFlights = (departureCity, arrivalCity, departureDate, returnDate) => (dispatch) => {
   dispatch({
     type: actions.FETCH_START,
   });
 
-  axios.post(`${BASE_URL}/api/flights`, {
-    departCity,
-    arriveCity,
-    departDate,
+  const params = {
+    departureCity,
+    arrivalCity,
+    departureDate,
     returnDate,
+  };
+
+  if (!returnDate) {
+    delete params.returnDate;
+  }
+
+  axios.get(`${BASE_URL}/api/flights`, {
+    params,
   })
     .then((response) => {
       dispatch({
