@@ -1,4 +1,4 @@
-import { filterDropdownOptions, calculateDuration, convertToTime } from '../utils/helpers';
+import { filterDropdownOptions, calculateDuration, convertToTime, generatePrice } from '../utils/helpers';
 
 describe('Helpers', () => {
   it('filter dropdown options', () => {
@@ -49,5 +49,15 @@ describe('Helpers', () => {
     const result = convertToTime(arrivalDateTime);
 
     expect(result).toEqual(expectedResult);
+  });
+
+  it('calculates price within valid range', () => {
+    const expectedMax = 10000;
+    const expectedMin = 2000;
+
+    const result = generatePrice();
+
+    expect(result).toBeLessThan(expectedMax);
+    expect(result).toBeGreaterThan(expectedMin);
   });
 });

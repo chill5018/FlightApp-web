@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { convertToTime, calculateDuration } from '../../utils/helpers';
+import { convertToTime, calculateDuration, generatePrice } from '../../utils/helpers';
 
 
 const propTypes = {
@@ -165,7 +165,7 @@ const FlightCard = ({ flight }) => (
 
     <div className="app-main-flightCard-pass">
       <h3 className="app-main-flightCard-pass-price">
-        2.236 DKK
+        { `${generatePrice()} DKK` }
       </h3>
       <p className="app-main-flightCard-pass-p">
         Flight

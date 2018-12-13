@@ -23,10 +23,13 @@ const calculateDuration = (departureDateTime, arrivalDateTime) => {
 
 const convertToTime = dateTimeString => moment(dateTimeString).utcOffset(0).format('HH:mm');
 
+const generatePrice = () => Math.floor(Math.random() * (10000 - 2000) + 2000);
+
 
 /* eslint-disable import/prefer-default-export */
 export {
   calculateDuration,
   convertToTime,
   filterDropdownOptions,
+  generatePrice,
 };
