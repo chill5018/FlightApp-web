@@ -1,10 +1,12 @@
 const UglifyJsWebpackPlugin = require('uglifyjs-webpack-plugin');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
+require('babel-polyfill');
 
 const commonPaths = require('./common-paths');
 
 const config = {
   entry: [
+    'babel-polyfill',
     commonPaths.entryPath,
   ],
   module: {

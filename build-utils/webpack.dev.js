@@ -1,9 +1,12 @@
 /* eslint-disable */
 const webpack = require('webpack');
 const commonPaths = require('./common-paths');
+require('babel-polyfill');
+
 
 const config = {
   entry: [
+    'babel-polyfill',
     'react-hot-loader/patch',
     commonPaths.entryPath,
   ],
