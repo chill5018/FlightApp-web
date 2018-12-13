@@ -292,7 +292,9 @@ exports[`Flight Snapshot renders correctly 1`] = `
       <p
         className="app-main-p"
       >
-        Total results: 20
+        Total results:
+         
+        0
       </p>
     </div>
   </div>

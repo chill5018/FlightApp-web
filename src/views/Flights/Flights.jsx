@@ -3,7 +3,6 @@ import Select from 'react-select';
 import { Input, Button } from 'reactstrap';
 import FlightCard from '../../components/FlightCard/index';
 
-import { flightResponse } from '../../data/flight-response';
 
 const options = [
   { label: 'Copenhagen', value: 'CPH' },
@@ -51,8 +50,22 @@ class Flights extends Component {
       return {};
     }
 
+    if (props.flights && props.searchParams) {
+      return {
+        flights: props.flights,
+        arrivalCity: props.searchParams.arrivalCity,
+        departureCity: props.searchParams.departureCity,
+        departureDate: props.searchParams.departureDate,
+        returnDate: props.searchParams.returnDate,
+      };
+    }
+
+    if (props.flights) {
+      return {
+        flights: props.flights,
+      };
+    }
     return {
-      flights: props.flights,
       arrivalCity: props.searchParams.arrivalCity,
       departureCity: props.searchParams.departureCity,
       departureDate: props.searchParams.departureDate,

@@ -14,7 +14,13 @@ describe('Flight Snapshot', () => {
   it('renders correctly', () => {
     const initialState = {
       flights: {
-        flights: undefined,
+        flights: [],
+      },
+      searchParams: {
+        arrivalCity: 'test',
+        departureCity: 'test',
+        departureDate: 'test',
+        returnDate: 'test',
       },
       bookings: {
         booking: undefined,
@@ -24,7 +30,7 @@ describe('Flight Snapshot', () => {
     const component = renderer.create(
     <Provider store={mockStore(initialState)}>
       <BrowserRouter>
-        <Flights />
+        <Flights history={[]} searchParams={initialState.searchParams} />
       </BrowserRouter>
     </Provider>,
     );
