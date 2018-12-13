@@ -37,6 +37,29 @@ class Flights extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentDidMount() {
+    const { flights, history } = this.props;
+
+    if (!flights) {
+      history.push('/');
+    }
+  }
+
+  static getDerivedStateFromProps(props) {
+    if (!props.flights) {
+      props.history.push('/');
+      return {};
+    }
+
+    return {
+      flights: props.flights,
+      arrivalCity: props.searchParams.arrivalCity,
+      departureCity: props.searchParams.departureCity,
+      departureDate: props.searchParams.departureDate,
+      returnDate: props.searchParams.returnDate,
+    };
+  }
+
   handleChange = (e) => {
     e.preventDefault();
 
@@ -73,7 +96,13 @@ class Flights extends Component {
   }
 
   render() {
-    const { departureCity, arrivalCity } = this.state;
+    const {
+      departureCity,
+      arrivalCity,
+      flights,
+      departureDate,
+      returnDate,
+    } = this.state;
     return (
     <div className="app-main">
       <div className="app-main-form-background">
@@ -106,6 +135,7 @@ class Flights extends Component {
                 type="date"
                 className="app-main-form-date_picker search-bar-input"
                 name="departureDate"
+                value={departureDate}
                 onChange={this.handleChange}
               />
             </div>
@@ -115,6 +145,7 @@ class Flights extends Component {
                 type="date"
                 className="app-main-form-date_picker search-bar-input"
                 name="returnDate"
+                value={returnDate}
                 onChange={this.handleChange}
               />
             </div>
@@ -140,11 +171,13 @@ class Flights extends Component {
       <div className="app-main-wrapper">
         <div className="app-main-col_1">
          <p className="app-main-p">
-          Total results: 20
+          Total results:
+          {' '}
+          { flights.length }
          </p>
-          { flightResponse.map(flight => (
+          { flights ? flights.map(flight => (
             <FlightCard flight={flight} bookFlight={this.bookFlight} />
-          ))}
+          )) : (<div>Loading...</div>)}
         </div>
       </div>
     </div>

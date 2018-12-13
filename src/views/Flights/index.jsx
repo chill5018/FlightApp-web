@@ -9,6 +9,8 @@ import Flights from './Flights';
 const mapStateToProps = (state) => {
   return {
     flights: state.flights.flights,
+    loading: state.flights.loading,
+    searchParams: state.flights.searchParams,
     booking: state.bookings.booking,
   };
 };
