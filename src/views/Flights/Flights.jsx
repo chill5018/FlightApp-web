@@ -19,12 +19,12 @@ const optionStyles = {
       color,
     };
   },
-  input: (styles) => {
-    return {
+  input: styles => (
+    {
       ...styles,
       'min-height': '30px',
-    };
-  },
+    }
+  ),
 };
 
 /* eslint-disable jsx-a11y/label-has-for */
@@ -36,8 +36,6 @@ class Flights extends Component {
     this.bookFlight = this.bookFlight.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
-
-  onChange = date => this.setState({ date })
 
   handleChange = (e) => {
     e.preventDefault();
