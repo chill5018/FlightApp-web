@@ -18,6 +18,9 @@ exports[`Home Snapshot renders correctly 1`] = `
     >
       <div
         className="app-main-col_2 dropdown-container"
+      />
+      <div
+        className="app-main-col_2 dropdown-container"
       >
         <label
           className="app-main-form-label"
