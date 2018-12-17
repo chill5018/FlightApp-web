@@ -21,6 +21,17 @@ const calculateDuration = (departureDateTime, arrivalDateTime) => {
   return `${hours}h ${minutes}m`;
 };
 
+const validateRoundTrip = (formDepartureDate, formReturnDate) => {
+  const departureDate = moment(formDepartureDate);
+  const returnDate = moment(formReturnDate);
+
+  if (returnDate < departureDate) {
+    throw new Error('Invalid Return Date, return date must be after departure date');
+  }
+
+  return true;
+};
+
 const convertToTime = dateTimeString => moment(dateTimeString).utcOffset(0).format('HH:mm');
 
 const generatePrice = () => Math.floor(Math.random() * (10000 - 2000) + 2000);
@@ -78,4 +89,5 @@ export {
   filterDropdownOptions,
   generatePrice,
   validateForm,
+  validateRoundTrip,
 };
