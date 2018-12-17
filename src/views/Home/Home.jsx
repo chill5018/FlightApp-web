@@ -35,7 +35,6 @@ class Home extends Component {
       ticketQty: 1,
     };
 
-    this.bookFlight = this.bookFlight.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleDepartureChange = this.handleDepartureChange.bind(this);
     this.handleArrivalChange = this.handleArrivalChange.bind(this);
