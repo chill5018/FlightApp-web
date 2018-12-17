@@ -40,9 +40,9 @@ exports[`Home Snapshot renders correctly 1`] = `
               className="css-1hwfws3"
             >
               <div
-                className="css-xp4uvy"
+                className="css-1492t68"
               >
-                Copenhagen
+                Departure City
               </div>
               <div
                 className="css-1g6gooi"
@@ -131,7 +131,7 @@ exports[`Home Snapshot renders correctly 1`] = `
           <input
             name="departureCity"
             type="hidden"
-            value="CPH"
+            value=""
           />
         </div>
       </div>
@@ -156,9 +156,9 @@ exports[`Home Snapshot renders correctly 1`] = `
               className="css-1hwfws3"
             >
               <div
-                className="css-xp4uvy"
+                className="css-1492t68"
               >
-                New York City (JFK)
+                Arrival City
               </div>
               <div
                 className="css-1g6gooi"
@@ -247,7 +247,7 @@ exports[`Home Snapshot renders correctly 1`] = `
           <input
             name="arrivalCity"
             type="hidden"
-            value="JFK"
+            value=""
           />
         </div>
       </div>
@@ -307,7 +307,6 @@ exports[`Home Snapshot renders correctly 1`] = `
             name="departureDate"
             onChange={[Function]}
             type="date"
-            value="2019-02-01"
           />
         </div>
         <div
@@ -324,7 +323,6 @@ exports[`Home Snapshot renders correctly 1`] = `
             name="returnDate"
             onChange={[Function]}
             type="date"
-            value="2019-02-14"
           />
         </div>
       </div>

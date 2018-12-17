@@ -27,10 +27,10 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      departureCity: options[0],
-      arrivalCity: options[1],
-      departureDate: '2019-02-01',
-      returnDate: '2019-02-14',
+      departureCity: undefined,
+      arrivalCity: undefined,
+      departureDate: '',
+      returnDate: '',
       isRoundtrip: true,
       ticketQty: 1,
     };
@@ -122,7 +122,6 @@ class Home extends Component {
                 options={options}
                 placeholder="Departure City"
                 styles={optionStyles}
-                value={departureCity}
               />
             </div>
 
@@ -137,7 +136,6 @@ class Home extends Component {
                 options={options}
                 placeholder="Arrival City"
                 styles={optionStyles}
-                value={arrivalCity}
               />
             </div>
 
@@ -181,7 +179,6 @@ class Home extends Component {
                   type="date"
                   className="app-main-form-date_picker"
                   name="departureDate"
-                  value={departureDate}
                   onChange={this.handleChange}
                 />
               </div>
@@ -196,7 +193,6 @@ class Home extends Component {
                     type="date"
                     className="app-main-form-date_picker"
                     name="returnDate"
-                    value={returnDate}
                     onChange={this.handleChange}
                   />
                 </div>

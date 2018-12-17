@@ -45,34 +45,42 @@ const validateForm = (formData) => {
     departureCity,
     arrivalCity,
     returnDate,
+    isRoundtrip,
   } = formData;
 
   if (departureDate.length > 10) {
     errors.push(`invalid date ${departureDate}`);
   }
 
-  if (returnDate.length > 10) {
-    errors.push(`invalid date ${returnDate}`);
+  if (isRoundtrip) {
+    if (returnDate.length > 10) {
+      errors.push(`invalid date ${returnDate}`);
+    }
   }
 
   if (!returnDate.includes('-') || !departureDate.includes('-')) {
     errors.push('invalid date format');
   }
 
-  if (departureCity.length > 3) {
+  if (!departureCity) {
+    errors.push('must select a departure city');
+  }
+
+  if (departureCity && departureCity.length > 3) {
     errors.push(`invalid departure city ${departureCity}`);
   }
 
-  if (!departureCity) {
-    errors.push('must select a departure city');
-  }
 
-  if (arrivalCity.length > 3) {
+  if (arrivalCity && arrivalCity.length > 3) {
     errors.push(`invalid departure city ${arrivalCity}`);
   }
 
-  if (!departureCity) {
-    errors.push('must select a departure city');
+  if (!arrivalCity) {
+    errors.push('must select an arrival city');
+  }
+
+  if (arrivalCity === departureCity) {
+    errors.push('departure and arrival cities cannot be the same');
   }
 
   if (errors.length > 0) {
