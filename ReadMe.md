@@ -1,35 +1,29 @@
-# React Start 
------ 
+# Dream Team Flight Client
+-----
 
-Taken inspiratation from Robin Wieruch's [ Minimal React Babel Setup ](https://github.com/rwieruch/minimal-react-webpack-babel-setup ) 
+## Deployed Web
 
-## Includes: 
+Please visit https://dt-flight-web.herokuapp.com/ to view the published website.
 
-### Core: 
-* Babel v. 6
-* Webpack v. 4
-* React v. 16.4.1
+## Key Technologies:
 
-### Development: 
-* Storybook v. 3.4.8
+### Core:
+* React v. 16.5.2
 
-### Testing: 
+### Testing:
 * Jest v. 23.4.1
 * Enzyme v. 3.3.0
 
 
-## Getting Started 
+## Getting Started
+1. clone / fork the repo
+2. install dependencies `yarn`
 
-1. clone / fork the repo 
-2. install dependencies `yarn` 
-
-### Dev Server 
+### Dev Server
 `yarn start` - starts webserver at http://localhost:3000
-`yarn start --port 3003` for custom port number 
+`yarn start --port 3003` for custom port number
 
-### Testing 
-`yarn test:watch` - watch local files 
-`yarn test:coverage` - current code coverage 
+### Testing
+`yarn test:watch` - watch local files
+`yarn test:coverage` - current code coverage
 
-### Storybook
-`yarn storybook` - starts storybook at https://localhost:6006
