@@ -1,4 +1,10 @@
-import { filterDropdownOptions, calculateDuration, convertToTime, generatePrice } from '../utils/helpers';
+import {
+  calculateDuration,
+  convertToTime,
+  filterDropdownOptions,
+  generatePrice,
+  validateForm,
+} from '../utils/helpers';
 
 describe('Helpers', () => {
   it('filter dropdown options', () => {
@@ -59,5 +65,72 @@ describe('Helpers', () => {
 
     expect(result).toBeLessThan(expectedMax);
     expect(result).toBeGreaterThan(expectedMin);
+  });
+
+
+  describe('Search Vorm Validation', () => {
+
+    it('validates search form properly', () => {
+      const formData = {
+        departureCity: 'CPH',
+        arrivalCity: 'JFK',
+        departureDate: '2019-02-01',
+        returnDate: '2019-02-14',
+        isRoundtrip: true,
+        ticketQty: 1,
+      };
+
+      const result = validateForm(formData);
+
+      expect(result).toEqual(true);
+    });
+
+    it('catches invalid city in search form properly', () => {
+      const formData = {
+        departureCity: 'Copenhagen',
+        arrivalCity: 'JFK',
+        departureDate: '2019-02-01',
+        returnDate: '2019-02-14',
+        isRoundtrip: true,
+        ticketQty: 1,
+      };
+
+      const result = validateForm(formData);
+      const expectedResult = ['invalid departure city Copenhagen'];
+
+      expect(result).toEqual(expectedResult);
+    });
+
+    it('catches invalid date in search form properly', () => {
+      const formData = {
+        departureCity: 'CPH',
+        arrivalCity: 'JFK',
+        departureDate: '20190201',
+        returnDate: '2019-02-14',
+        isRoundtrip: true,
+        ticketQty: 1,
+      };
+
+      const result = validateForm(formData);
+      const expectedResult = ['invalid date format'];
+
+      expect(result).toEqual(expectedResult);
+    });
+
+    it('catches multiple errors', () => {
+      const formData = {
+        departureCity: 'Copenhagen',
+        arrivalCity: 'JFK',
+        departureDate: '20190201',
+        returnDate: '2019-02-14',
+        isRoundtrip: true,
+        ticketQty: 1,
+      };
+
+      const result = validateForm(formData);
+      const expectedResult = ['invalid date format', 'invalid departure city Copenhagen'];
+
+      expect(result).toEqual(expectedResult);
+    });
   });
 });

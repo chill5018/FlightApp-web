@@ -4,6 +4,7 @@ import { Input, Button } from 'reactstrap';
 import Select from 'react-select';
 
 import './index.scss';
+import { validateForm } from '../../utils/helpers';
 
 const options = [
   { label: 'Copenhagen', value: 'CPH' },
@@ -79,12 +80,19 @@ class Home extends Component {
       departureCity,
       arrivalCity,
       departureDate,
+      isRoundtrip,
       returnDate,
       ticketQty,
     } = this.state;
 
-    /* eslint-disable max-len */
-    await searchFlights(departureCity.value, arrivalCity.value, departureDate, returnDate, ticketQty);
+    const errors = validateForm(this.state);
+
+    if (errors.length > 0) {
+      this.setState({ errors });
+    } else {
+      /* eslint-disable max-len */
+      await searchFlights(departureCity.value, arrivalCity.value, departureDate, isRoundtrip ? returnDate : undefined, ticketQty);
+    }
   }
 
   render() {
@@ -93,6 +101,7 @@ class Home extends Component {
       arrivalCity,
       departureCity,
       departureDate,
+      errors,
       returnDate,
     } = this.state;
     return (
@@ -102,6 +111,13 @@ class Home extends Component {
             Book a flight
           </h4>
           <form onSubmit={() => {}} className="app-main-form app-main-col_1">
+            <div className="app-main-col_2 dropdown-container">
+              { errors && errors.map(error => (
+                <li>
+                {error}
+                </li>
+              ))}
+            </div>
             <div className="app-main-col_2 dropdown-container">
               <label className="app-main-form-label">
                 From
