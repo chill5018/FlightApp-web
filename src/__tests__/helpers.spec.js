@@ -4,6 +4,7 @@ import {
   filterDropdownOptions,
   generatePrice,
   validateForm,
+  validateRoundTrip,
 } from '../utils/helpers';
 
 describe('Helpers', () => {
@@ -67,9 +68,26 @@ describe('Helpers', () => {
     expect(result).toBeGreaterThan(expectedMin);
   });
 
+  it('validates round trip dates', () => {
+    const departureDate = '2019-02-02';
+    const returnDate = '2019-02-12';
 
-  describe('Search Vorm Validation', () => {
+    const result = validateRoundTrip(departureDate, returnDate);
 
+    expect(result).toEqual(true);
+  });
+
+  it('catches when return date is before depart date', () => {
+    const departureDate = '2019-02-02';
+    const returnDate = '2019-02-12';
+
+    const expectedError = new Error('Invalid Return Date, return date must be after departure date');
+
+    expect(() => validateRoundTrip(returnDate, departureDate)).toThrowError(expectedError);
+  });
+
+
+  describe('Search Form Validation', () => {
     it('validates search form properly', () => {
       const formData = {
         departureCity: 'CPH',

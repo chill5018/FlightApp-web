@@ -68,12 +68,6 @@ class Home extends Component {
     this.setState({ departureCity: selectedOption });
   }
 
-  bookFlight(event) {
-    const { bookFlight } = this.props;
-
-    bookFlight(event.target.value);
-  }
-
   async searchFlights() {
     const { searchFlights } = this.props;
     const {
