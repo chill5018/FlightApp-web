@@ -15,7 +15,11 @@ Please visit https://dt-flight-web.herokuapp.com/ to view the published website.
 * Enzyme v. 3.3.0
 
 
-## Getting Started
+### Documentation
+
+We have included all releavant documentation in the Docs directory for review.
+
+## Getting Started Locally
 1. clone / fork the repo
 2. install dependencies `yarn`
 
