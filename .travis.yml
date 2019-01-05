@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - "node"
+env:
+  global:
+  - NODE_ENV=testing
+before_script:
+  - npm install
+script:
+  - npm run test
