@@ -1,5 +1,7 @@
 # Dream Team Flight Client
------
+
+
+[![Build Status](https://travis-ci.org/chill5018/FlightApp-web.svg?branch=master)](https://travis-ci.org/chill5018/FlightApp-web)
 
 ## Deployed Web
 
