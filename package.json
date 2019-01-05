@@ -7,18 +7,19 @@
   "private": true,
   "scripts": {
     "build-dev": "webpack --mode development",
+    "build:bundleanalyze": "npm run build -- --env.addons=bundleanalyze",
+    "build:bundlevisualizer": "npm run build -- --env.addons=bundlevisualizer",
+    "build": "webpack --env.env=prod",
+    "ci": "yarn install",
+    "dev:bundleanalyze": "npm run dev -- --env.addons=bundleanalyze",
+    "dev": "webpack-dev-server --mode development --env.env=dev",
     "lint": "eslint ./src --fix",
+    "postinstall": "yarn build",
+    "start": "serve -s dist",
     "storybook": "start-storybook -p 6006 -c .storybook",
-    "test": "jest",
     "test:coverage": "jest --watch --coverage",
     "test:watch": "jest --watch",
-    "start": "serve -s dist",
-    "postinstall": "yarn build",
-    "dev": "webpack-dev-server --mode development --env.env=dev",
-    "dev:bundleanalyze": "npm run dev -- --env.addons=bundleanalyze",
-    "build": "webpack --env.env=prod",
-    "build:bundleanalyze": "npm run build -- --env.addons=bundleanalyze",
-    "build:bundlevisualizer": "npm run build -- --env.addons=bundlevisualizer"
+    "test": "jest"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
