@@ -6,6 +6,7 @@ import { convertToTime, calculateDuration, generatePrice } from '../../utils/hel
 
 const propTypes = {
   flight: PropTypes.shape({
+    price: PropTypes.number,
     departureFlight: PropTypes.shape({
       airline: PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -164,7 +165,7 @@ const FlightCard = ({ flight }) => (
 
     <div className="app-main-flightCard-pass">
       <h3 className="app-main-flightCard-pass-price">
-        { `${generatePrice()} DKK` }
+        { `${flight.price || generatePrice()} DKK` }
       </h3>
       <p className="app-main-flightCard-pass-p">
         Flight
