@@ -83,6 +83,10 @@ const validateForm = (formData) => {
     errors.push('departure and arrival cities cannot be the same');
   }
 
+  if (returnDate && new Date(returnDate) <= new Date(departureDate)) {
+    errors.push('return Date cannot be before departure date');
+  }
+
   if (errors.length > 0) {
     return errors;
   }

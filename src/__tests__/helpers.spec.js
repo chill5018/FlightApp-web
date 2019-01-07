@@ -150,5 +150,55 @@ describe('Helpers', () => {
 
       expect(result).toEqual(expectedResult);
     });
+
+    describe('Boundary Value Analysis', () => {
+      it('catches return date that is 1 day before departure date', () => {
+        const formData = {
+          departureCity: 'CPH',
+          arrivalCity: 'JFK',
+          departureDate: '2019-02-14',
+          returnDate: '2019-02-13',
+          isRoundtrip: true,
+          ticketQty: 1,
+        };
+
+        const result = validateForm(formData);
+        const expectedResult = ['return Date cannot be before departure date'];
+
+        expect(result).toEqual(expectedResult);
+      });
+
+      it('catches return date that same day as departure date', () => {
+        const formData = {
+          departureCity: 'CPH',
+          arrivalCity: 'JFK',
+          departureDate: '2019-02-02',
+          returnDate: '2019-02-02',
+          isRoundtrip: true,
+          ticketQty: 1,
+        };
+
+        const result = validateForm(formData);
+        const expectedResult = ['return Date cannot be before departure date'];
+
+        expect(result).toEqual(expectedResult);
+      });
+
+      it('passes when return date that is one day after departure date', () => {
+        const formData = {
+          departureCity: 'CPH',
+          arrivalCity: 'JFK',
+          departureDate: '2019-02-02',
+          returnDate: '2019-02-03',
+          isRoundtrip: true,
+          ticketQty: 1,
+        };
+
+        const result = validateForm(formData);
+        const expectedResult = true;
+
+        expect(result).toEqual(expectedResult);
+      });
+    });
   });
 });
