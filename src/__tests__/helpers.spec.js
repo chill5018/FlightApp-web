@@ -119,12 +119,28 @@ describe('Helpers', () => {
       expect(result).toEqual(expectedResult);
     });
 
-    it('catches invalid date in search form properly', () => {
+    it('catches invalid departure date in search form properly', () => {
       const formData = {
         departureCity: 'CPH',
         arrivalCity: 'JFK',
         departureDate: '20190201',
         returnDate: '2019-02-14',
+        isRoundtrip: true,
+        ticketQty: 1,
+      };
+
+      const result = validateForm(formData);
+      const expectedResult = ['invalid date format'];
+
+      expect(result).toEqual(expectedResult);
+    });
+
+    it('catches invalid return date in search form properly', () => {
+      const formData = {
+        departureCity: 'CPH',
+        arrivalCity: 'JFK',
+        departureDate: '2019-02-01',
+        returnDate: '20190214',
         isRoundtrip: true,
         ticketQty: 1,
       };
@@ -148,6 +164,19 @@ describe('Helpers', () => {
       const result = validateForm(formData);
       const expectedResult = ['invalid date format', 'invalid departure city Copenhagen'];
 
+      expect(result).toEqual(expectedResult);
+    });
+
+    it('can book one-way flight', () => {
+      const formData = {
+        departureCity: 'CPH',
+        arrivalCity: 'JFK',
+        departureDate: '2019-02-01',
+        ticketQty: 1,
+      };
+
+      const result = validateForm(formData);
+      const expectedResult = true;
       expect(result).toEqual(expectedResult);
     });
 
