@@ -56,9 +56,13 @@ const validateForm = (formData) => {
     if (returnDate.length > 10) {
       errors.push(`invalid date ${returnDate}`);
     }
+
+    if (!returnDate.includes('-')) {
+      errors.push('invalid date format');
+    }
   }
 
-  if (!returnDate.includes('-') || !departureDate.includes('-')) {
+  if (!departureDate.includes('-')) {
     errors.push('invalid date format');
   }
 
