@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { Input, Button } from 'reactstrap';
 import FlightCard from '../../components/FlightCard/index';
+
+const propTypes = {
+  getBooking: PropTypes.func,
+};
+
+const defaultProps = {
+  getBooking: () => {},
+};
 
 class Booking extends Component {
   constructor(props) {
@@ -91,3 +100,6 @@ class Booking extends Component {
 }
 
 export default withRouter(Booking);
+
+Booking.propTypes = propTypes;
+Booking.defaultProps = defaultProps;
