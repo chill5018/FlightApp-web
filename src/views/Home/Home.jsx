@@ -91,11 +91,7 @@ class Home extends Component {
   render() {
     const {
       isRoundtrip,
-      arrivalCity,
-      departureCity,
-      departureDate,
       errors,
-      returnDate,
     } = this.state;
     return (
       <div className="app-main">
